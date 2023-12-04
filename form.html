@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>"form"
+    </title>
+    <style>
+         body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #27c57b, #009688);
+            /* Cor de fundo verde claro */
+        }
+
+        header {
+            background: linear-gradient(to right, #27c57b, #009688);
+            /* Gradiente no cabeçalho */
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        header img {
+            text-align: center;
+            width: 300px;
+            height: auto;
+            border-radius: 50%;
+            /* Adicionado para bordas arredondadas */
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(to right, #27c57b, #009688);
+            /* Gradiente no menu */
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+
+       
+
+        form {
+            color: #fff;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-gap: 10px;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        form p {
+            margin: 0;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #34db87;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+        }
+
+        #successMessage {
+            color: #27ae60;
+            font-weight: bold;
+            display: none;
+            margin-top: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 1em;
+            background: linear-gradient(to right, #27c57b, #009688);
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div>
+            <a href="index.html">
+                <img width="200" src="logo2.jpg" alt="Logo de Jéssica Pessoa">
+            </a>
+        </div>
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="#" onclick="toggleServices()"></a>
+        </nav>
+    </header>
+    <div>
+        <form id="appointmentForm" onsubmit="return submitForm()">
+            <p> Nome completo: <input type="text" id="nome" required></p>
+            <p> Email: <input type="email" id="email" required></p>
+            <p> Idade: <input type="number" id="Idade"></p>
+            <p> Serviço:<input type="text" id="service" required></p>
+            <p>Observação: <input type="text" id="Observação" required></p>
+            <button type="submit">Enviar</button>
+        </form>
+        <div id="successMessage">Obrigado! Seu agendamento foi recebido com sucesso.</div>
+    </div>
+
+    <footer>
+        &copy; 2023 Jéssica Pessoa - Esteticista |
+        <a href="https://www.instagram.com/jessicapessoaestetica/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="
+            target="_blank">
+            <i class="fab fa-instagram" style="color: #f9fafa;"></i>
+        </a>
+        <a href="https://api.whatsapp.com/send/?phone=557998750877" target="_blank">
+            <i class="fab fa-whatsapp" style="color: #f9fafa;"></i>
+        </a>
+    </footer>
+
+
+    <script>
+        function submitForm() {
+            // Aqui você pode adicionar lógica para validar os campos do formulário antes de enviá-lo
+
+            // Exemplo de validação simples para o campo de nome
+            var nomeInput = document.getElementById('nome'); // Supondo que você tenha um campo de entrada com id 'nome'
+            if (nomeInput.value === '') {
+                alert('Por favor, preencha o campo de nome.');
+                return false; // Isso impede o envio do formulário se a validação falhar
+            }
+
+            // Aqui você pode adicionar código para enviar os dados do formulário para o servidor usando AJAX, por exemplo
+            // Exemplo de envio usando Fetch API
+            fetch('url_do_seu_servidor', {
+                method: 'POST',
+                body: new FormData(document.getElementById('appointmentForm')),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Aqui você pode lidar com a resposta do servidor
+                    console.log('Resposta do servidor:', data);
+                    document.getElementById('successMessage').style.display = 'block'; // Exibir mensagem de sucesso, se houver
+                })
+                .catch(error => {
+                    console.error('Erro ao enviar o formulário:', error);
+                    // Aqui você pode lidar com erros de envio do formulário
+                });
+
+            return false; // Retorna false para evitar o envio padrão do formulário
+        }
+
+    </script>
+</body>
+
+</html>

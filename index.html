@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #27c57b, #009688);
+            /* Cor de fundo verde claro */
+        }
+
+        header {
+            background: linear-gradient(to right, #27c57b, #009688);
+            /* Gradiente no cabeçalho */
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        header img {
+            text-align: center;
+            width: 300px;
+            height: auto;
+            border-radius: 50%;
+            /* Adicionado para bordas arredondadas */
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(to right, #27c57b, #009688);
+            /* Gradiente no menu */
+            padding: 10px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            margin: 20px;
+            text-decoration: none;
+            background: linear-gradient(to right, #27c57b, #009688);
+            /* Cor de fundo das seções */
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        #servicesList {
+            columns: 2;
+            column-gap: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #servicesList li {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        #servicesList li:hover {
+            display: flex;
+            justify-content: center;
+            background: linear-gradient(to right, #27c57b, #009688);
+        }
+
+        #servicesList li .description {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #servicesList li:hover .description {
+            display: block;
+        }
+
+        #contact a {
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(to right, #27c57b, #009688);
+            display: flex;
+            justify-content: center;
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+            /* Adiciona transição de cor e fundo */
+        }
+
+        #contact a:hover {
+            color: #000;
+            /* Cor quando o mouse está sobre o link */
+        }
+
+       
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 10px;
+        }
+
+        button {
+            grid-column: span 2;
+            padding: 10px;
+            background-color: #34db87;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+        }
+
+        #successMessage {
+            color: #27ae60;
+            font-weight: bold;
+            display: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em;
+            background: linear-gradient(to right, #27c57b, #009688);
+            color: #fff;
+        }
+    </style>
+    <title>Jéssica Pessoa - Esteticista</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <a href="index.html">
+                <img width="200" src="logo2.jpg" alt="Logo de Jéssica Pessoa">
+            </a>
+        </div>
+    </header>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="#" onclick="toggleServices()">Serviços</a>
+    </nav>
+
+    <section id="servicesList" style="display: none;">
+        <p>
+        <h2>Abrangemos diversas variações adaptadas às necessidades individuais de cada cliente.</h2>
+        </p>
+        <h3><i>Nossos serviços:</i></h3>
+        <div class="service-column">
+            <li onclick="toggleDescription(this)">Limpeza de Pele
+                <div class="description">
+                    Tratamentos oferecidos:
+                    <ul>
+                        <li>Hidratação Facial</li>
+                        <li>Tratamento Específico para Acne</li>
+                        <li>Limpeza de Pele Revitalizante</li>
+                    </ul>
+                </div>
+            </li>
+
+            <li onclick="toggleDescription(this)">Tratamento Facial
+
+                <div class="description">
+                    <ul>
+                        <li>Facial Hidratante: Proporciona hidratação intensa, deixando a pele suave e revitalizada.
+                        </li>
+                        <li>Antienvelhecimento: Reduz sinais de envelhecimento, como linhas finas e rugas, para uma
+                            aparência mais jovem.</li>
+                        <li>Pele Oleosa: Controla a produção de óleo, minimiza poros dilatados e previne acne.</li>
+                        <li>Peeling Facial: Remove camadas superficiais, promovendo renovação celular e melhorando a
+                            textura
+                            da pele.</li>
+                        <li>Tratamento Clareador: Diminui hiperpigmentação, manchas escuras e irregularidades na
+                            tonalidade
+                            da pele.</li>
+                        <li>Tratamento para Acne Facial: Combate acne, reduz inflamação e previne futuros surtos.</li>
+                        <li>Tratamento Relaxante: Experiência de spa facial relaxante com massagem e produtos
+                            nutritivos.
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li onclick="toggleDescription(this)">Depilação
+                <div class="description">
+                    <ul>
+                        <li>Depilação com Cera: Técnicas avançadas para remoção eficaz de pelos, deixando a pele macia.
+                        </li>
+                        <li>Depilação Facial: Remoção precisa de pelos no rosto para um visual limpo e definido.</li>
+                        <li>Depilação Corporal: Remoção de pelos em áreas como pernas, braços e axilas para uma pele
+                            suave.
+                        </li>
+                        <li>Depilação Íntima: Serviços íntimos com respeito, privacidade e atenção aos detalhes.</li>
+                        <li>Depilação Masculina: Atendimento personalizado para clientes masculinos.</li>
+                        <li>Profissionalismo: Resultados duradouros com cuidado e produtos de alta qualidade.</li>
+                    </ul>
+                </div>
+            </li>
+
+
+            <!-- Adicione mais serviços conforme necessário -->
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact">
+        <a href="form.html">
+            <h2>Agende sua avaliação</h2>
+        </a>
+
+    </section>
+
+    <footer>
+        &copy; 2023 Jéssica Pessoa - Esteticista |
+        <a href="https://www.instagram.com/jessicapessoaestetica/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA=="
+            target="_blank">
+            <i class="fab fa-instagram" style="color: #f9fafa;"></i>
+        </a>
+        <a href="https://api.whatsapp.com/send/?phone=557998750877" target="_blank">
+            <i class="fab fa-whatsapp" style="color: #f9fafa;"></i>
+        </a>
+    </footer>
+
+    <script>
+        function toggleServices() {
+            var servicesList = document.getElementById('servicesList');
+            servicesList.style.display = (servicesList.style.display === 'none' || servicesList.style.display === '') ? 'block' : 'none';
+        }
+
+        function toggleDescription(serviceItem) {
+            var description = serviceItem.querySelector('.description');
+            description.style.display = (description.style.display === 'none' || description.style.display === '') ? 'block' : 'none';
+
+            // Oculta a descrição dos outros serviços
+            var allServiceItems = document.querySelectorAll('#servicesList li');
+            Array.from(allServiceItems).forEach(function (item) {
+                if (item !== serviceItem) {
+                    item.querySelector('.description').style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
