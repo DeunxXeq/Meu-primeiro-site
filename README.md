@@ -1,2 +1,2 @@
 # Meu-primeiro-site
-site de Jéssica
+Site estética
